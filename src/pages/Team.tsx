@@ -1,7 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Mail } from "lucide-react";
 
 const Team = () => {
@@ -10,33 +10,32 @@ const Team = () => {
       title: "Research Leadership",
       members: [
         {
-          name: "Dr. Fanie Ndlovu",
+          name: "Proff. Olive Stumke",
           role: "Research Group Leader",
           initials: "FN",
+          image: "/src/assets/Proff.jpg",
           bio: "Leading innovative research in AI and immersive technologies for accounting education at DUT.",
-          email: "faniendlovu@dut.ac.za",
+          email: "OliveS@dut.ac.za",
         },
       ],
     },
     {
       title: "Core Research Team",
       members: [
+       
+      
         {
-          name: "Research Associate",
-          role: "AI Systems Specialist",
-          initials: "RA",
-          bio: "Developing generative AI tutoring systems and learning analytics platforms.",
-        },
-        {
-          name: "Research Associate",
+          name: "Mr Fanie Ndlovu",
           role: "VR/AR Developer",
-          initials: "RB",
+          initials: "FN",
+          image: "/src/assets/FN.jpg",
           bio: "Creating immersive simulation environments for audit training.",
         },
         {
-          name: "Research Associate",
+          name: "Mrs. Ugeshnie Moodley",
           role: "Educational Researcher",
-          initials: "RC",
+          initials: "UM",
+          image: "/src/assets/UM.jpg",
           bio: "Investigating pedagogical approaches and learning outcomes in technology-enhanced education.",
         },
       ],
@@ -45,46 +44,53 @@ const Team = () => {
       title: "Technical Development Team",
       members: [
         {
-          name: "Developer",
+          name: "Mhlengi Nkabinde",
           role: "Full-Stack Developer",
           initials: "D1",
+          image: "/src/assets/Mhlengi.jpeg",
+          bio: "Building web-based warehouse management and audit simulation platforms.",
+        },
+           {
+          name: "Nomfundo Manyoni",
+          role: "Full-Stack Developer",
+          initials: "D2",
+          image: "/src/assets/Nomfundo.jpeg",
           bio: "Building web-based warehouse management and audit simulation platforms.",
         },
         {
-          name: "Developer",
+          name: "Qiniso Mthethwa",
           role: "VR Engineer",
-          initials: "D2",
+          initials: "D3",
+           image: "/src/assets/Qiniso.jpeg",
+          bio: "Implementing 3D environments and interactive VR experiences.",
+        },
+          {
+          name: "Siphesihle Mkhize",
+          role: "VR Engineer",
+          initials: "D4",
+          image: "/src/assets/Siphesihle.jpeg",
           bio: "Implementing 3D environments and interactive VR experiences.",
         },
         {
-          name: "Developer",
+          name: "Mpendulo Xulu",
           role: "AI Engineer",
-          initials: "D3",
+          initials: "D5",
+          image: "/src/assets/Mpendulo.jpg",
           bio: "Integrating machine learning models and AI capabilities into educational tools.",
         },
       ],
     },
     {
-      title: "Student Researchers (EPIP Group)",
+      title: "Media Team",
       members: [
         {
-          name: "Student Researcher",
-          role: "Postgraduate Researcher",
-          initials: "S1",
-          bio: "Contributing to VR simulation development and user experience research.",
+          name: "Siyanda Magubane",
+          role: "Videographer",
+          initials: "M1",
+          image: "/src/assets/Siyanda.jpg",
+          bio: "Producing engaging visual content and sharpening digital storytelling.",
         },
-        {
-          name: "Student Researcher",
-          role: "Undergraduate Researcher",
-          initials: "S2",
-          bio: "Supporting data collection and analysis for learning analytics studies.",
-        },
-        {
-          name: "Student Researcher",
-          role: "Undergraduate Researcher",
-          initials: "S3",
-          bio: "Assisting with testing and validation of educational platforms.",
-        },
+     
       ],
     },
   ];
@@ -109,8 +115,89 @@ const Team = () => {
         {/* Team Sections */}
         <section className="py-16">
           <div className="container mx-auto px-4">
+            {/* Research Leadership Centered */}
+            <div className="max-w-6xl mx-auto mb-16">
+              <h2 className="text-3xl font-bold mb-8 text-center">{teamCategories[0].title}</h2>
+              <div className="flex justify-center">
+                {teamCategories[0].members.map((member, memberIndex) => (
+                  <Card key={memberIndex} className="shadow-medium hover:shadow-large transition-smooth w-full max-w-sm">
+                    <CardHeader>
+                      <div className="flex flex-col items-center text-center">
+                        <Avatar className="w-20 h-20 mb-4 bg-gradient-primary">
+                          {member.image ? (
+                            <AvatarImage
+                              src={member.image}
+                              alt={member.name}
+                              className="object-cover w-full h-full rounded-full"
+                            />
+                          ) : null}
+                          <AvatarFallback className="text-primary-foreground text-xl font-semibold">
+                            {member.initials}
+                          </AvatarFallback>
+                        </Avatar>
+                        <CardTitle className="text-xl mb-1">{member.name}</CardTitle>
+                        <p className="text-sm text-primary font-medium">{member.role}</p>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="text-center">
+                      <p className="text-sm text-muted-foreground mb-4">{member.bio}</p>
+                      {member.email && (
+                        <a 
+                          href={`mailto:${member.email}`}
+                          className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
+                        >
+                          <Mail className="w-4 h-4" />
+                          Contact
+                        </a>
+                      )}
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+            {/* Core Research Team Centered */}
+            <div className="max-w-6xl mx-auto mb-16">
+              <h2 className="text-3xl font-bold mb-8 text-center">{teamCategories[1].title}</h2>
+              <div className="flex justify-center flex-wrap gap-6">
+                {teamCategories[1].members.map((member, memberIndex) => (
+                  <Card key={memberIndex} className="shadow-medium hover:shadow-large transition-smooth w-full max-w-sm">
+                    <CardHeader>
+                      <div className="flex flex-col items-center text-center">
+                        <Avatar className="w-20 h-20 mb-4 bg-gradient-primary">
+                          {member.image ? (
+                            <AvatarImage
+                              src={member.image}
+                              alt={member.name}
+                              className="object-cover w-full h-full rounded-full"
+                            />
+                          ) : null}
+                          <AvatarFallback className="text-primary-foreground text-xl font-semibold">
+                            {member.initials}
+                          </AvatarFallback>
+                        </Avatar>
+                        <CardTitle className="text-xl mb-1">{member.name}</CardTitle>
+                        <p className="text-sm text-primary font-medium">{member.role}</p>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="text-center">
+                      <p className="text-sm text-muted-foreground mb-4">{member.bio}</p>
+                      {member.email && (
+                        <a 
+                          href={`mailto:${member.email}`}
+                          className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
+                        >
+                          <Mail className="w-4 h-4" />
+                          Contact
+                        </a>
+                      )}
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+            {/* Other Team Sections */}
             <div className="max-w-6xl mx-auto space-y-16">
-              {teamCategories.map((category, catIndex) => (
+              {teamCategories.slice(2).map((category, catIndex) => (
                 <div key={catIndex}>
                   <h2 className="text-3xl font-bold mb-8 text-center">{category.title}</h2>
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -119,6 +206,13 @@ const Team = () => {
                         <CardHeader>
                           <div className="flex flex-col items-center text-center">
                             <Avatar className="w-20 h-20 mb-4 bg-gradient-primary">
+                              {member.image ? (
+                                <AvatarImage
+                                  src={member.image}
+                                  alt={member.name}
+                                  className="object-cover w-full h-full rounded-full"
+                                />
+                              ) : null}
                               <AvatarFallback className="text-primary-foreground text-xl font-semibold">
                                 {member.initials}
                               </AvatarFallback>
