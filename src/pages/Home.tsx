@@ -4,7 +4,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Brain, Lightbulb, Users, TrendingUp } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import heroImage from "@/assets/hero-bg.jpg";
+
+const heroImage = "/assets/hero-bg.jpg";
+
 
 const Home = () => {
   const highlights = [
